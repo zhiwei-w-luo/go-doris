@@ -23,13 +23,14 @@ import (
 
 func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
-	log.Print("starting picoshare server")
+	log.Print("starting doris server")
 
 	dbPath := flag.String("db", "data/store.db", "path to database")
 	vacuumDb := flag.Bool("vacuum", false, "vacuum database periodically to reclaim disk space")
 	flag.Parse()
 
-	authenticator, err := shared_secret.New(requireEnv("PS_SHARED_SECRET"))
+	//authenticator, err := shared_secret.New(requireEnv("PS_SHARED_SECRET"))
+	authenticator, err := shared_secret.New("test123")
 	if err != nil {
 		log.Fatalf("invalid shared secret: %v", err)
 	}
